@@ -93,7 +93,7 @@
     $item->picture_url = $_POST['img'];
     $item->unit_price = $_POST['price'];
 
-    
+
     $preference->items = array($item);
     $preference->payer = $payer;
     $preference->save();
@@ -190,7 +190,10 @@
                                         </h3>
                                     </div>
 
-                                    <a href="<?php echo $preference->init_point; ?>">Pay with Mercado Pago</a>
+
+
+
+                                        <button class="mercadopago-button"><a href="<?php echo $preference->init_point; ?>">Pagar la compra</a></button>
 
                                 </div>
                             </div>
