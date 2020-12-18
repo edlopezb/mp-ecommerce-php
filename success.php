@@ -7,8 +7,8 @@
   <body>
     <h1>Success</h1>
 
-      <p><strong>Payment method:</strong> <?php echo $_SERVER['payment_method_id'] ?></p>
-      <p><strong>External reference:</strong> <?php echo $_SERVER['external_reference'] ?></p>
-      <p><strong>Payment ID:</strong> <?php echo $_SERVER['payment_id'] ?></p>
+      <p><strong>Payment method:</strong> <?php echo htmlspecialchars($_GET["payment_method_id"]) ?></p>
+      <p><strong>External reference:</strong> <?php echo htmlspecialchars($_GET["external_reference"]) ?></p>
+      <p><strong>Payment ID:</strong> <?php echo htmlspecialchars($_GET["payment_id"]) ?></p>
   </body>
 </html>
