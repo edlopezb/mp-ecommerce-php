@@ -189,11 +189,7 @@
                                             <?php echo "$" . $_POST['unit'] ?>
                                         </h3>
                                     </div>
-
-
-
-
-                                        <button class="mercadopago-button"><a href="<?php echo $preference->init_point; ?>">Pagar la compra</a></button>
+                                        <a href="<?php echo $preference->init_point; ?>"><button class="mercadopago-button">Pagar la compra</button></a>
 
                                 </div>
                             </div>
