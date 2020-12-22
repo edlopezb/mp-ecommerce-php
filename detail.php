@@ -52,13 +52,17 @@
 
     // Crea un objeto de preferencia
     $preference = new MercadoPago\Preference();
+
     $preference->payment_methods = array(
-        "excluded_payment_method" => array(
-            "id" => "amex",
-            "id" => "atm"
-        ),
-        "installments" => 6
+      "excluded_payment_methods" => array(
+        array("id" => "amex")
+      ),
+      "excluded_payment_types" => array(
+        array("id" => "atm")
+      ),
+      "installments" => 6
     );
+
     $preference->back_urls = array(
         "success" => "https://edlopezb-mp-commerce-php.herokuapp.com/success.php",
         "failure" => "https://edlopezb-mp-commerce-php.herokuapp.com/failure.php",
@@ -67,8 +71,6 @@
     $preference->auto_return = "approved";
     $preference->external_reference = "eduardolopezb94@gmail.com";
     $preference->notification_url = "https://e4eeaa2257e14776c298e084ff5cfdb8.m.pipedream.net";
-
-
 
     // Crea un usuario en la preferencia
     $payer = new MercadoPago\Payer();
@@ -90,7 +92,8 @@
     $item->id = 1234;
     $item->title = $_POST['title'];
     $item->quantity = 1;
-    $item->picture_url = $_POST['img'];
+    $item->picture_url = "https://edlopezb-mp-commerce-php.herokuapp.com/assets/l6g6.jpg";
+    $item->description = "Dispositivo móvil de Tienda e-commerce";
     $item->unit_price = $_POST['price'];
 
 
@@ -159,7 +162,7 @@
                                             <div class="clearfix image-list xs-no-js as-util-relatedlink relatedlink" data-relatedlink="6|Powerbeats3 Wireless Earphones - Neighborhood Collection - Brick Red|MPXP2">
                                                 <div class="as-tilegallery-element as-image-selected">
                                                     <div class=""></div>
-                                                    <img src="./assets/003.jpg" class="ir ir item-image as-producttile-image" alt="" width="445" height="445" style="content:-webkit-image-set(url(<?php echo $_POST['img'] ?>) 2x);">
+                                                    <img src="https://edlopezb-mp-commerce-php.herokuapp.com/<?php echo $_POST['img'] ?>" class="ir ir item-image as-producttile-image" alt="" width="445" height="445" style="content:-webkit-image-set(url(<?php echo $_POST['img'] ?>) 2x);">
                                                 </div>
 
                                             </div>
@@ -183,11 +186,9 @@
                                             </h3>
                                         </div>
                                         <h3 >
-                                            <?php echo $_POST['price'] ?>
+                                            <?php echo "$" . $_POST['price']?>
                                         </h3>
-                                        <h3 >
-                                            <?php echo "$" . $_POST['unit'] ?>
-                                        </h3>
+                                        <p style="margin-bottom: 15px;">Dispositivo móvil de Tienda e-commerce</p>
                                     </div>
                                         <a href="<?php echo $preference->init_point; ?>"><button class="mercadopago-button">Pagar la compra</button></a>
 
